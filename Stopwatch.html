@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>setTimeout Example</title>
+  <link rel="stylesheet" href="stopwatch.css">
+</head>
+<body>
+  <div class="container">
+    <div>
+      <img class="image" src="./image/image.png" >
+    </div>
+    <p id="counter">00:00:00</p>
+    <div class="buttons">
+      <button id="startButton">Start</button>
+      <button id="stopButton">Stop</button>
+      <button id="resetButton">Reset</button>
+    </div>
+  </div>
+  <script>
+    let count = 0;
+    let minutes = 0;
+    let hours = 0;
+    let intervalId = null;
+    const startButton = document.getElementById("startButton");
+    const stopButton = document.getElementById("stopButton");
+    const resetButton = document.getElementById("resetButton");
+    const counterElement = document.getElementById("counter");
+
+    function formatTime(value){
+      return value.toString().padStart(2,'0');
+    }
+    function updateDisplay(){
+      counterElement.innerText = `${formatTime(hours)}:${formatTime(minutes)}:${formatTime(count)}`;
+    }
+    startButton.addEventListener("click", function() {
+      if (!intervalId) {
+        intervalId = setInterval(function() {
+          count++;
+          if(count === 60){
+            minutes++;
+            count = 0;
+          }
+          if(minutes === 60){
+            hours++;
+            minutes = 0;
+            count=0;
+          }
+          updateDisplay();
+        }, 1000);
+      }
+    });
+
+    stopButton.addEventListener("click", function() {
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+    });
+
+    resetButton.addEventListener("click", function() {
+      count = 0;
+      minutes = 0;
+      hours = 0;
+      updateDisplay();
+      if(intervalId){
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+    });
+    updateDisplay();
+  </script>
+</body>
+</html>

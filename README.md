@@ -1,0 +1,1 @@
+This is a Stopwatch logic which are commenly used in the mobile phones and only using basic HTML ,CSS and JavaScript. A basic project to understand the combination of HTML,CSS and Javascript for beginners. 

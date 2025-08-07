@@ -11,9 +11,9 @@
     </div>
     <p id="counter">00:00:00</p>
     <div class="buttons">
-      <button id="startButton">Start</button>
+      <button id="startButton" >Start</button>
       <button id="stopButton">Stop</button>
-      <button id="resetButton">Reset</button>
+      <button id="resetButton" >Reset</button>
     </div>
   </div>
   <script>
@@ -25,6 +25,7 @@
     const stopButton = document.getElementById("stopButton");
     const resetButton = document.getElementById("resetButton");
     const counterElement = document.getElementById("counter");
+
 
     function formatTime(value){
       return value.toString().padStart(2,'0');
